@@ -1,0 +1,18 @@
+//  prompts used for each AI and their responses
+
+SORT_PROMPT:
+    generate a sorting algorithm for a vector called ary, the vector contains 100000 integers use cpp, and only standard libraries, optimize for speed as much as possible
+
+    ChatGPT(Codex):
+        https://chatgpt.com/share/69d576d1-4278-8329-8a44-616b4a058fe0
+        gave a unique radix sort, and details
+        also said STD::sort was simpler
+
+    Gemini:
+        https://gemini.google.com/share/7de8f0f317b0
+        Gave STD::Sort but also explained
+
+    Claud(Opus):
+        https://claude.ai/share/e4f7132c-71fc-493b-8955-6e51c1febf9d
+        Gave STD::Sort with a good explination, however gave optimizations from the compiler level
+
