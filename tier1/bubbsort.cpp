@@ -31,7 +31,8 @@ int main(void) {
             }
         }
     }
-    
+    std::cout<< "===================================\n";
+
     std::cout << "(";
     for (int i = 0; i < LISTSIZE; i++) std::cout << nums[i] << " ";
     std::cout << ")" << std::endl;
