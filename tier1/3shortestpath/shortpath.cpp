@@ -6,7 +6,7 @@
 #include <graaflib/graph.h>
 #include <graaflib/io/dot.h>
 
-#define NUM_NODES 13
+#define NUM_NODES 16 
 #define EDGE_LIMIT 5 
 #define EDGE_DISTANCE_LIMIT 100
 
