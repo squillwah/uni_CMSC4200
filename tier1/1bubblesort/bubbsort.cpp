@@ -12,10 +12,8 @@ int main(void) {
     int nums[LISTSIZE];
     for (int i = 0; i < LISTSIZE; i++) 
         nums[i] = rand() % LISTSIZE*10;
-
-    std::cout << "(";
-    for (int i = 0; i < LISTSIZE; i++) std::cout << nums[i] << " ";
-    std::cout << ")" << std::endl;
+    
+    std::cout << "Starting..." << std::endl;
 
     int i;
     int tmp;
@@ -31,11 +29,8 @@ int main(void) {
             }
         }
     }
-    std::cout<< "===================================\n";
-
-    std::cout << "(";
-    for (int i = 0; i < LISTSIZE; i++) std::cout << nums[i] << " ";
-    std::cout << ")" << std::endl;
+    
+    std::cout << "Done!" << std::endl;
 
     return 0;
 }
