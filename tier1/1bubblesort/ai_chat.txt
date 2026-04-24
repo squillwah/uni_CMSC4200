@@ -1,0 +1,7 @@
+Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RESPONCES:
+    @   CHAT GPT:
+
+
+
