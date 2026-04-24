@@ -1,7 +1,25 @@
+bubble sort:
 Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 RESPONCES:
-    @   CHAT GPT:
+    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebd4d5-21c0-83ea-a827-2e0c11b82253?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+    @   GEMINI:     https://gemini.google.com/share/4e534fcb93f7
+            //  Gemini gave us a solution that used an external library, which is missing minor addition to compile, as well as a solution that doesnt use it making a new method
+            //  does not give us implimentation details
+    @   CLAUD:      https://claude.ai/share/981bd98b-d208-4664-b97e-4f1a0fc6b553
 
+linear search:
+Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RESPONCES:
+    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf081-9d78-83ea-b654-fc60feca6397?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+    @   GEMINI:     https://gemini.google.com/share/b5ad6189ab20
+    @   CLAUD:      https://claude.ai/share/585decdf-3178-4825-a0b4-80543b5ebc70
 
-
+Traveling Salesman Problem:
+Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RESPONCES:
+    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf365-ac38-83ea-9ec1-603513717307?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+    @   GEMINI:     https://gemini.google.com/share/e5435d39fa60
+    @   CLAUDE:     https://claude.ai/share/00641947-dc0f-4912-a0a7-310c41181cc2
