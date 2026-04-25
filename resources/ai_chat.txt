@@ -39,3 +39,15 @@ id search:
     @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ecf050-01fc-83ea-aa29-c0d1e258f192?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
     @   GEMINI:     https://gemini.google.com/share/b6fcdb128ddc
     @   CLAUDE:     https://claude.ai/share/ea61f34b-3d59-4179-bcad-3fca7745275a
+
+shortest town:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    @   CHAT GPT:
+    @   GEMINI:
+    @   CLAUDE
+
+bus route:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ecf42d-0b6c-83ea-b66d-27519fd912ba?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+    @   GEMINI:     https://gemini.google.com/share/99563a8577f4
+    @   CLAUDE      https://claude.ai/share/3493520a-2986-45ce-be5b-774bab2baa7a
