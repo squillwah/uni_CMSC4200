@@ -1,25 +1,138 @@
-bubble sort:
-Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RESPONCES:
-    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebd4d5-21c0-83ea-a827-2e0c11b82253?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
-    @   GEMINI:     https://gemini.google.com/share/4e534fcb93f7
-            //  Gemini gave us a solution that used an external library, which is missing minor addition to compile, as well as a solution that doesnt use it making a new method
-            //  does not give us implimentation details
-    @   CLAUD:      https://claude.ai/share/981bd98b-d208-4664-b97e-4f1a0fc6b553
+Tier 1:
+    bubble sort:
+    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RESPONCES:
+        @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebd4d5-21c0-83ea-a827-2e0c11b82253?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+        @   GEMINI:     https://gemini.google.com/share/4e534fcb93f7
+        @   CLAUD:      https://claude.ai/share/981bd98b-d208-4664-b97e-4f1a0fc6b553
 
-linear search:
-Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RESPONCES:
-    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf081-9d78-83ea-b654-fc60feca6397?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
-    @   GEMINI:     https://gemini.google.com/share/b5ad6189ab20
-    @   CLAUD:      https://claude.ai/share/585decdf-3178-4825-a0b4-80543b5ebc70
+    linear search:
+    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RESPONCES:
+        @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf081-9d78-83ea-b654-fc60feca6397?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+        @   GEMINI:     https://gemini.google.com/share/b5ad6189ab20
+        @   CLAUD:      https://claude.ai/share/585decdf-3178-4825-a0b4-80543b5ebc70
 
-Traveling Salesman Problem:
-Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RESPONCES:
-    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf365-ac38-83ea-9ec1-603513717307?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
-    @   GEMINI:     https://gemini.google.com/share/e5435d39fa60
-    @   CLAUDE:     https://claude.ai/share/00641947-dc0f-4912-a0a7-310c41181cc2
+    Traveling Salesman Problem:
+    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RESPONCES:
+        @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf365-ac38-83ea-9ec1-603513717307?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+            Follow-up Prompt:
+                Please answer the following questions, one at a time, and separating each answer: 
+                    Where was the inefficiency in the original code? 
+                    What changes did you make? 
+                    Why did you make those changes? 
+                    Why do those changes make the algorithm faster? 
+                    Is your solution a known solution?
+
+                        1. Where was the inefficiency in the original code?
+                            The original code used brute-force backtracking. It tried almost every possible route through the cities, which grows factorially: about O(n!).
+
+                        2. What changes did you make?
+                            I replaced the recursive backtracking with dynamic programming using bitmasks.
+                            The new version stores the best known cost for:
+                            dp[visitedCities][currentCity]
+                            It also stores parents so the final path can still be printed.
+
+                        3. Why did you make those changes?
+                            The original code recalculated the same partial routes many times. Dynamic programming avoids that by saving results for each set of visited cities and current position.
+
+                        4. Why do those changes make the algorithm faster?
+                            Backtracking checks roughly every permutation of cities.
+                            The DP version checks each meaningful state once:
+                            O(n^2 * 2^n)
+                            For 13 cities, that is dramatically smaller than 12!.
+
+                        5. Is your solution a known solution?
+                            Yes. This is the Held-Karp algorithm, a well-known dynamic programming solution for the Traveling Salesman Problem.
+
+        @   GEMINI:     https://gemini.google.com/share/e5435d39fa60
+            Follow-up Prompt:
+                Please answer the following questions, one at a time, and separating each answer: 
+                    Where was the inefficiency in the original code? 
+                    What changes did you make? 
+                    Why did you make those changes? 
+                    Why do those changes make the algorithm faster? 
+                    Is your solution a known solution?
+
+                        1. Where was the inefficiency in the original code?
+                            The original code used a Backtracking approach. While correct, its time complexity was $O(n!)$ (factorial).
+                            In the Travelling Salesman Problem, a factorial complexity means that for every new city you add, the number of paths to check multiplies by the total number of cities. 
+                            For your dataset of 13 cities, the algorithm would potentially have to evaluate roughly 479 million different permutations. 
+                            As $n$ grows, this quickly becomes computationally impossible for standard processors.
+
+                        2. What changes did you make?
+                            -I transformed the algorithm from a simple recursive search into Dynamic Programming (DP) with Bitmasking.
+                            -Bitmasking: I replaced the vector<bool> visited with a single integer. Each bit in that integer represents a city (1 if visited, 0 if not).
+                            -Memoization: I added a memo table (a 2D array) to store the results of sub-problems.
+                            -Path Reconstruction: Instead of passing the current path through every recursive call (which is slow due to vector copying/pushing), 
+                            I used a parent table to record the best decision made at each state, then reconstructed the path once at the end.
+
+                        3. Why did you make those changes?
+                            I made these changes to eliminate redundant calculations.
+                            In the original code, if the algorithm reached City 5 having already visited Cities 1, 2, and 3, it would calculate the best way to finish the tour.
+                            If it later reached City 5 via a different order (e.g., visiting 3, 2, and then 1), it would re-calculate the best way to finish the tour all over again.
+                            Since the "remaining cities" to visit are the same, the answer for the second half of the trip doesn't change.
+                            Memoization allows the code to "remember" the answer and return it instantly.
+                            
+                        4. Why do those changes make the algorithm faster?      //  reformated formulas, didnt convert to ascii well
+                            The complexity dropped from O(n!) to O(n^2 * 2^n)
+                            For 13 cities:
+                                -Original (12!) ~= 479,001,600 operations.
+                                -Optimized (13^2 * 2^13) ~= 1,384,448 operations.
+                            By using a bitmask, we can represent the "state" of the journey (where we are + which cities we've seen) as a unique pair of integers. 
+                            This reduces the search space from hundreds of millions of paths to just over a million states. 
+                            The computer can process a million operations in a fraction of a second.
+
+                        5. Is your solution a known solution?
+                            Yes. This specific algorithm is known as the Held-Karp algorithm (also called the Bellman-Held-Karp algorithm).
+                            It was proposed in 1962 and remains the standard exact solution for the Travelling Salesman Problem for small-to-medium datasets (up to about $n=20$ or $25$).
+                            While TSP is NP-hard (meaning there is no known "perfectly fast" way to solve it for thousands of cities),
+                            Held-Karp is the most efficient way to get an exact answer without checking every single permutation.
+
+        @   CLAUDE:     https://claude.ai/share/00641947-dc0f-4912-a0a7-310c41181cc2
+            Follow-up Prompt:
+                Please answer the following questions, one at a time, and separating each answer: 
+                    Where was the inefficiency in the original code? 
+                    What changes did you make? 
+                    Why did you make those changes? 
+                    Why do those changes make the algorithm faster? 
+                    Is your solution a known solution?
+
+                        1. Where was the inefficiency in the original code?
+                            The original was pure backtracking with no pruning — it explored every possible permutation of cities regardless of whether the partial path could ever beat the best known solution.
+                            With 13 cities that's up to 12! = 479,001,600 paths to evaluate. 
+                            It also used a vector<bool> for visited state, which adds memory overhead on every recursive call, and started every search with ans = INT_MAX, 
+                            meaning no useful pruning could happen until the very first complete tour was found.
+
+                        2. What changes did you make?
+                            -Replaced vector<bool> visited with a bitmask integer
+                            -Added a lowerBound() function based on minimum outgoing edges
+                            -Added a greedy nearest-neighbor pre-pass to seed ans before exact search
+                            -Added a pruning check at the top of the recursion using the lower bound
+                            -Sorted candidate neighbors by edge cost before recursing
+
+                        3. Why did you make those changes?
+                            The core problem was that the original code did no pruning at all — it couldn't reject a bad partial path until it was fully completed. 
+                            Every change targets that gap: give the algorithm a way to recognize a dead-end branch early and skip it entirely. 
+                            The greedy seed ensures pruning is active from the very first call rather than only after stumbling onto a complete tour organically.
+
+                        4. Why do those changes make the algorithm faster?
+                            The lower bound check is the dominant speedup — if the cheapest imaginable way to finish the current partial tour still can't beat the known best, 
+                            the entire subtree rooted at that call is skipped in one step. 
+                            The greedy seed makes this check aggressive immediately rather than gradually. 
+                            Sorting neighbors so cheaper edges are explored first means good solutions are found earlier, 
+                            which tightens ans sooner, which makes the lower bound check fire more often and cut more branches. 
+                            The bitmask removes per-call allocation and turns visited checks into single CPU instructions. 
+                            These effects compound: each pruned subtree prevents thousands or millions of recursive calls.
+
+                        5. Is your solution a known solution?
+                            Yes. It is a standard Branch-and-Bound approach to TSP, one of the most well-documented exact algorithms for the problem. 
+                            The specific lower bound used here — summing the minimum outgoing edge from each unvisited node — 
+                            is a classical and simple bound sometimes called the "minimum edge" or "1-tree relaxation lite" bound. 
+                            Pairing it with a greedy nearest-neighbor seed is also a textbook technique.
+                            More advanced implementations (like Held-Karp, which runs in O(2ⁿ · n²) using dynamic programming) are faster still, 
+                            but this branch-and-bound structure is the standard first step up from naive backtracking.
