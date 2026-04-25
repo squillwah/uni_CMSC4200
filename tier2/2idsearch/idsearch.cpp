@@ -34,11 +34,13 @@ student genStudent() {
 
 int main(void) {
     srand(time(0));
-    int target;
+    int target = 10000; //  set to max for testing, worst case
 
+    //  removed for timing reason
+    /*
     cout << "Target ID: ";
     cin >> target;
-
+    */
     student students[LISTSIZE];
     for (int i = 0; i < LISTSIZE; i++) {
         students[i] = genStudent();
