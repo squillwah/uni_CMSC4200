@@ -1,6 +1,6 @@
 Tier 1:
+Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     bubble sort:
-    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RESPONCES:
         @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebd4d5-21c0-83ea-a827-2e0c11b82253?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
@@ -8,7 +8,6 @@ Tier 1:
         @   CLAUD:      https://claude.ai/share/981bd98b-d208-4664-b97e-4f1a0fc6b553
 
     linear search:
-    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RESPONCES:
         @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf081-9d78-83ea-b654-fc60feca6397?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
@@ -16,7 +15,6 @@ Tier 1:
         @   CLAUD:      https://claude.ai/share/585decdf-3178-4825-a0b4-80543b5ebc70
 
     shortest path:
-    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RESPONCES:
     @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ecd94f-25e0-83ea-8a1e-e263fd5158eb?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
@@ -24,7 +22,6 @@ Tier 1:
     @   CLAUD:      https://claude.ai/share/c7ce6f5b-2623-4898-acfb-a1c9bd66609e
 
     Traveling Salesman Problem:
-    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RESPONCES:
         @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ebf365-ac38-83ea-9ec1-603513717307?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
