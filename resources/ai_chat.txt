@@ -15,6 +15,14 @@ Tier 1:
         @   GEMINI:     https://gemini.google.com/share/b8bd2977b18c
         @   CLAUD:      https://claude.ai/share/585decdf-3178-4825-a0b4-80543b5ebc70
 
+    shortest path:
+    Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RESPONCES:
+    @   CHAT GPT:   https://chatgpt.com/g/g-p-698e27180edc819193a572013ca4c61f-cmsc-4200-ai-project/shared/c/69ecd94f-25e0-83ea-8a1e-e263fd5158eb?owner_user_id=user-b61q14xvbDXuuRGIhaArGOr4
+    @   GEMINI:     https://gemini.google.com/share/a55e2886071b
+    @   CLAUD:      https://claude.ai/share/c7ce6f5b-2623-4898-acfb-a1c9bd66609e
+
     Traveling Salesman Problem:
     Prompt: "Optimize this code, you can change anything except the libraries and the creation and population of the array"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
