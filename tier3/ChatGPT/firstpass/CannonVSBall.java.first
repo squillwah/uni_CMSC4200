@@ -1,0 +1,287 @@
+package CannonVSBall;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CannonVSBall implements ActionListener, AdjustmentListener,
+        ComponentListener, ItemListener, Runnable, WindowListener {
+
+    private static final Dimension MIN_WINDOW_SIZE = new Dimension(640, 480);
+
+    private Frame window;
+    private Panel pnl_display, pnl_controls;
+
+    private CannonBallEngine engine;
+    private MultiBufferedCanvas display;
+
+    private Thread mainThread;
+    private volatile boolean running;
+
+    private Label lblForce, lblAngle, lblScoreBall, lblScorePlayer, lblTime;
+    private Scrollbar sbForce, sbAngle;
+
+    public static void main(String[] args) {
+        new CannonVSBall();
+    }
+
+    public CannonVSBall() {
+        engine = new CannonBallEngine();
+        display = new MultiBufferedCanvas(engine.renderer());
+
+        window = new Frame("CannonBubbles");
+        window.setMinimumSize(MIN_WINDOW_SIZE);
+        window.setLayout(new BorderLayout());
+
+        pnl_display = new Panel(new BorderLayout());
+        pnl_controls = new Panel(new GridLayout(2, 3));
+
+        sbForce = new Scrollbar(Scrollbar.HORIZONTAL, 250, 100, 0, 800);
+        sbAngle = new Scrollbar(Scrollbar.HORIZONTAL, 0, 100, 0, 1000);
+
+        lblForce = new Label("Force");
+        lblAngle = new Label("Angle");
+        lblScoreBall = new Label("Bubbles: 0");
+        lblScorePlayer = new Label("Player: 0");
+        lblTime = new Label("Time: 0");
+
+        pnl_controls.add(sbForce);
+        pnl_controls.add(lblScoreBall);
+        pnl_controls.add(sbAngle);
+        pnl_controls.add(lblForce);
+        pnl_controls.add(lblTime);
+        pnl_controls.add(lblScorePlayer);
+
+        pnl_display.add(display);
+
+        window.add(pnl_display, BorderLayout.CENTER);
+        window.add(pnl_controls, BorderLayout.SOUTH);
+
+        sbForce.addAdjustmentListener(this);
+        sbAngle.addAdjustmentListener(this);
+
+        window.addWindowListener(this);
+        window.addComponentListener(this);
+
+        display.addMouseListener(engine);
+        display.addMouseMotionListener(engine);
+
+        window.setVisible(true);
+        start();
+    }
+
+    private void start() {
+        if (mainThread == null) {
+            running = true;
+            mainThread = new Thread(this);
+            mainThread.start();
+        }
+    }
+
+    private void stop() {
+        running = false;
+        if (mainThread != null) {
+            mainThread.interrupt();
+        }
+    }
+
+    @Override
+    public void run() {
+        long last = System.nanoTime();
+
+        while (running) {
+            long now = System.nanoTime();
+            double dt = (now - last) * 1e-9;
+            last = now;
+
+            engine.tick(dt);
+
+            // UI sync (minimal work)
+            sbAngle.setValue((int)(engine.get_cannon_angle() * 10));
+            sbForce.setValue((int)engine.get_cannon_force());
+
+            lblAngle.setText("Angle: " + sbAngle.getValue() / 10.0);
+            lblForce.setText("Force: " + sbForce.getValue());
+            lblTime.setText("Time: " + (int)engine.get_elapsed_time());
+
+            lblScoreBall.setText("Bubbles: " + engine.get_score_bubbles());
+            lblScorePlayer.setText("Player: " + engine.get_score_player());
+
+            display.repaint();
+
+            try {
+                Thread.sleep(8); // smoother + less CPU
+            } catch (InterruptedException ignored) {}
+        }
+    }
+
+    @Override
+    public void adjustmentValueChanged(AdjustmentEvent e) {
+        if (e.getSource() == sbAngle) {
+            engine.set_cannon_angle(sbAngle.getValue() / 10.0);
+        } else {
+            engine.set_cannon_force(sbForce.getValue());
+        }
+    }
+
+    @Override
+    public void componentResized(ComponentEvent e) {
+        engine.set_world_size(pnl_display.getSize());
+    }
+
+    @Override public void windowClosing(WindowEvent e) { stop(); System.exit(0); }
+
+    // Unused interface methods
+    public void actionPerformed(ActionEvent e) {}
+    public void itemStateChanged(ItemEvent e) {}
+    public void componentMoved(ComponentEvent e) {}
+    public void componentShown(ComponentEvent e) {}
+    public void componentHidden(ComponentEvent e) {}
+    public void windowOpened(WindowEvent e) {}
+    public void windowClosed(WindowEvent e) {}
+    public void windowIconified(WindowEvent e) {}
+    public void windowDeiconified(WindowEvent e) {}
+    public void windowActivated(WindowEvent e) {}
+    public void windowDeactivated(WindowEvent e) {}
+}
+
+/* ================= ENGINE ================= */
+
+class CannonBallEngine implements MouseListener, MouseMotionListener {
+
+    private static final double PIXELS_PER_METER = 10;
+
+    private final List<Bubble> bubbles = new ArrayList<>();
+    private final List<Balloid> balls = new ArrayList<>();
+
+    private final CannonBallRenderer renderer = new CannonBallRenderer(new Dimension(600, 400));
+
+    private double cannonAngle = Math.PI / 2;
+    private double cannonForce = 200;
+    private double gravity = 9.8 * PIXELS_PER_METER;
+
+    private double elapsed;
+
+    public CannonBallEngine() {
+        bubbles.add(new Bubble());
+    }
+
+    public void tick(double dt) {
+        elapsed += dt;
+
+        for (Bubble b : bubbles) {
+            b.update(dt, gravity);
+        }
+
+        for (int i = 0; i < balls.size(); i++) {
+            Balloid ball = balls.get(i);
+            ball.update(dt, gravity);
+
+            if (ball.offscreen()) {
+                balls.remove(i--);
+            }
+        }
+    }
+
+    public Renderer renderer() { return renderer; }
+
+    public void set_cannon_angle(double deg) {
+        cannonAngle = Math.toRadians(deg);
+    }
+
+    public void set_cannon_force(double f) { cannonForce = f; }
+
+    public double get_cannon_angle() { return Math.toDegrees(cannonAngle); }
+    public double get_cannon_force() { return cannonForce; }
+    public double get_elapsed_time() { return elapsed; }
+
+    public int get_score_bubbles() { return 0; }
+    public int get_score_player() { return 0; }
+
+    @Override public void mousePressed(MouseEvent e) {
+        balls.add(new Balloid(cannonAngle, cannonForce));
+    }
+
+    // unused
+    public void mouseDragged(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {}
+    public void mouseMoved(MouseEvent e) {}
+}
+
+/* ================= OBJECTS ================= */
+
+class Bubble {
+    double x = 100, y = 100;
+    double vx = 80, vy = 60;
+
+    void update(double dt, double g) {
+        vy += g * dt;
+        x += vx * dt;
+        y += vy * dt;
+    }
+}
+
+class Balloid {
+    double x, y, vx, vy;
+
+    Balloid(double angle, double force) {
+        x = 0;
+        y = 0;
+        vx = Math.cos(angle) * force;
+        vy = -Math.sin(angle) * force;
+    }
+
+    void update(double dt, double g) {
+        vy += g * dt;
+        x += vx * dt;
+        y += vy * dt;
+    }
+
+    boolean offscreen() {
+        return x < 0 || x > 1000 || y > 1000;
+    }
+}
+
+/* ================= RENDERING ================= */
+
+abstract class Renderer {
+    public abstract void draw(Graphics g);
+}
+
+class CannonBallRenderer extends Renderer {
+    private final Dimension size;
+
+    public CannonBallRenderer(Dimension size) {
+        this.size = size;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, size.width, size.height);
+    }
+}
+
+class MultiBufferedCanvas extends Canvas {
+    private final Renderer renderer;
+    private BufferedImage buffer;
+
+    public MultiBufferedCanvas(Renderer r) {
+        this.renderer = r;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        if (buffer == null) {
+            buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        }
+        Graphics bg = buffer.getGraphics();
+        renderer.draw(bg);
+        g.drawImage(buffer, 0, 0, null);
+    }
+}
